@@ -1,0 +1,25 @@
+permalink: /:year/:month/:day/:title.html                 
+paginate: 10
+markdown: kramdown
+highlighter: pygments
+
+# 作者信息
+author:
+  name: William Fang
+  email: william.lian.fang@gmail.com
+  ## link: http://zhenchen.me
+  weibo: http://weibo.com/u/2270629193
+  github: http://github.com/williamlfang
+
+# 站点信息
+title: 价值投资者
+description: 方莲，一个价值投资者
+url: http://williamlfang.github.com/       ## {{ site.url }}
+sub_url: /finance
+rss_url: /pages/atom.xml
+language: 中文
+
+
+# disqus 设置
+disqus:
+  shortname: william

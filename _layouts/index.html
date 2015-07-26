@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!--[if lte IE 9]><meta http-equiv="refresh" content="0;url={{  site.sub_url }}/ie.html"><![endif]-->
+
+    <title>{{ page.title }}</title>
+    <meta name="description" content="">
+    <link rel="icon" type="image/png" href="{{ site.sub_url }}/assets/img/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="{{ site.sub_url }}/assets/css/style.css">
+
+
+  </head>
+  <body>
+    <aside id="sidebar">
+      <nav id="tags">
+        <a href="{{ site.sub_url }}/index.html" id="avatar"></a>
+
+
+        <ul id="tags__ul">
+          <li id="js-label1" class="tags__li tags-btn active">全部</li>
+          <li id="js-label2" class="tags__li tags-btn">理论</li>
+          <li id="js-label3" class="tags__li tags-btn">策略</li>
+          <li id="js-label4" class="tags__li tags-btn">股票</li>
+          <li id="js-label5" class="tags__li tags-btn">技术</li>
+          <li id="js-label6" class="tags__li tags-btn">随笔</li>
+          <li id="js-label7" class="tags__li tags-btn">分享</li>
+          <li id="js-label8" class="tags__li tags-btn">关于</li>
+<!--          
+// Variables
+    tag1       = $('.pl__all'),
+    tag2       = $('.theory'),    
+    tag3       = $('.strategy'),
+    tag4       = $('.stock'),
+    tag5       = $('.technology'),
+    tag6       = $('.idea');
+    tag7       = $('.share');
+    tag8       = $('.about');
+-->    
+        </ul>
+
+        <div id="tags__bottom">
+          <a href="mailto:{{ site.author.email }}" id="icon-email" class="tags-btn fontello"></a>
+          <a href="{{ site.sub_url }}/rss.xml" id="icon-feed" class="tags-btn fontello"></a>
+        </div>
+      </nav> <!-- end #tags -->
+
+      <div id="posts-list">
+        <form action="" id="search-form">
+          <a href="{{ site.sub_url }}/index.html" id="mobile-avatar"></a>
+          <!-- NOTE: input field is disabled by default -->
+          <!--<input id="search-input" type="text" placeholder="爱生活，爱Coding" disabled >-->
+          <div style="padding: 20px 20px 20px; font-size: 18px;font-family: inherit; color: #1B813F;
+">/* 专注价值投资 */</div>
+        </form>
+
+        <nav id="pl__container">
+        {% for post in site.posts %}
+          <a class="{{ post.categories }} pl__all" href="{{ site.sub_url }}{{ post.url }}"><span class="pl__circle"></span><span class="pl__title">{{ post.title }}</span><span class="pl__date">{{ post.date | date: "%b %d %Y" }}</span></a>
+        {% endfor %}
+        </nav>
+      </div> <!-- end #posts-list -->
+    </aside> <!-- end #sidebar -->
+
+    <div id="post">
+      <div id="pjax">
+        {{ content }}
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">目录</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+
+    <script src="{{ site.sub_url }}/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="{{ site.sub_url }}/assets/js/jquery.pjax.js"></script>
+    <script src="{{ site.sub_url }}/assets/js/nprogress.js"></script>
+    <script src="{{ site.sub_url }}/assets/js/script.js"></script>
+
+    <!--
+    <script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F8df9f41c154d89488e1b1cc18038ab8f' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    -->
+
+<!--=================================================================== -->
+
+<!-- RFE: for easier MathJax install https://github.com/mathjax/MathJax/issues/339 -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code'] // removed 'code' entry
+    },
+    /*   方程编号 */
+    TeX: {
+            equationNumbers: {
+                autoNumber: ["AMS"],
+                useLabelIds: true,
+                extensions: ["AMSmath.js"]
+            }
+        },
+        "HTML-CSS": {
+            linebreaks: {
+                automatic: true
+            },
+            preferredFont: "TeX", 
+            availableFonts: ["STIX","TeX"], 
+            scale: 90,      /* 数学字体大小*/
+            styles: {".MathJax": {color: "#1abc9c"}}
+        },
+        SVG: {
+            linebreaks: {
+                automatic: true
+            }
+        }
+        /*   方程编号 */
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML'></script>
+
+<script>
+function callback()
+{
+    if(mathjax_loaded)
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    else
+    {
+        MathJax.Hub.Startup.onload();
+        mathjax_loaded = true;
+    }
+}
+</script>
+
+
+<script>    
+InstantClick.on('change', function(isInitialLoad) {
+  if (isInitialLoad === false) {
+    if (typeof MathJax !== 'undefined') // support MathJax
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    if (typeof prettyPrint !== 'undefined') // support google code prettify
+      prettyPrint();
+    if (typeof _hmt !== 'undefined')  // support 百度统计
+      _hmt.push(['_trackPageview', location.pathname + location.search]);
+    if (typeof ga !== 'undefined')  // support google analytics
+        ga('send', 'pageview', location.pathname + location.search);
+  }
+});
+</script>
+<!--=================================================================== -->
+<!--=================================================================== -->
+
+
+
+
+  </body>
+</html>
